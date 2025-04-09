@@ -16,7 +16,7 @@ interface TaskModalProps {
   isOpen: boolean;
   onClose: () => void;
   existingTask?: Task;
-  onSave: (task: any) => void;
+  onSave: (task: unknown) => void;
 }
 
 const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, existingTask, onSave }) => {

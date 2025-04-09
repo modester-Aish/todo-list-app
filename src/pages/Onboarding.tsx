@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -6,6 +5,7 @@ import { UserProfile } from '@/components/onboarding/UserProfile';
 import { WorkPreference } from '@/components/onboarding/WorkPreference';
 import { ThemeSelect } from '@/components/onboarding/ThemeSelect';
 import { OnboardingComplete } from '@/components/onboarding/OnboardingComplete';
+import { toast } from "@/components/ui/use-toast";
 
 // Define onboarding steps
 const STEPS = ['profile', 'work', 'theme', 'complete'];
@@ -26,6 +26,10 @@ const Onboarding = () => {
     } else {
       // Save user data to localStorage and redirect to main app
       localStorage.setItem('userProfile', JSON.stringify(userData));
+      toast({
+        title: "Onboarding completed!",
+        description: "Welcome to TaskMaster. Let's get productive!",
+      });
       navigate('/home');
     }
   };

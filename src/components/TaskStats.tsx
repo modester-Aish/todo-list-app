@@ -94,7 +94,7 @@ const TaskStats: React.FC = () => {
 interface StatCardProps {
   title: string;
   value: string;
-  icon: React.FC<any>;
+  icon: React.FC<unknown>;
   description: string;
   className?: string;
 }

@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,9 +14,19 @@ import LandingPage from "./pages/LandingPage";
 const queryClient = new QueryClient();
 
 const App: React.FC = () => {
-  // Check if the user has completed onboarding
-  const userProfile = localStorage.getItem('userProfile');
-  const isNewUser = !userProfile;
+  const [isLoading, setIsLoading] = useState(true);
+  const [isNewUser, setIsNewUser] = useState(true);
+
+  useEffect(() => {
+    // Check if the user has completed onboarding
+    const userProfile = localStorage.getItem('userProfile');
+    setIsNewUser(!userProfile);
+    setIsLoading(false);
+  }, []);
+
+  if (isLoading) {
+    return <div className="flex items-center justify-center h-screen">Loading...</div>;
+  }
 
   return (
     <BrowserRouter>
