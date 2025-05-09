@@ -26,6 +26,8 @@ const Onboarding = () => {
     } else {
       // Save user data to localStorage and redirect to main app
       localStorage.setItem('userProfile', JSON.stringify(userData));
+      // Dispatch storage event to notify other components
+      window.dispatchEvent(new Event('storage'));
       toast({
         title: "Onboarding completed!",
         description: "Welcome to TaskMaster. Let's get productive!",
